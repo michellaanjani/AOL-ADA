@@ -1,3 +1,5 @@
+//Penjelasan Time Complexity
+
 #include <stdio.h>// 1
 
 int main() { // 1
@@ -33,5 +35,5 @@ int main() { // 1
     return 0; // 1
 }
 
-Jadi time complexity O(test) -> O(n)
+Jadi time complexity O(test) + O(test) + 1 + .. + 1 -> O(n)
 Hal ini karena tidak ada nested loop dan loop terpisah sehinga tidak ada pangkat 2, pangkat terbesar adalah test pangkat 1 atau n pangkat 1
