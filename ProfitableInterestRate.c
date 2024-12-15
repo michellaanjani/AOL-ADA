@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 int main() {
-    int test; // Jumlah kasus uji
+    int test; // Membaca int sebagai test case untuk batasan loop permintaan khasus 
     scanf("%d", &test);
     long long a, b; // Jumlah koin yang dimiliki Alice dan jumlah minimum untuk membuka deposito Profitable
-    long long result[test]; 
+    long long result[test]; //hasil yaitu uang maksimum yang bisa Alice tabungkan
 
     for(int i = 0; i < test; i++) {
         scanf("%lld %lld", &a, &b);
