@@ -51,9 +51,6 @@ int main() {
         
 
     free(result);
-    getchar();
-    getchar();
-    getchar();
 
     return 0;
 
