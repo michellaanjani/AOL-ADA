@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+//jalankan code di https://www.onlinegdb.com/online_c_compiler
 int main() {
     int test; // Membaca int sebagai test case untuk batasan loop permintaan kasus
     scanf("%d", &test); // Input jumlah test case
