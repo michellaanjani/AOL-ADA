@@ -1,36 +1,41 @@
 #include <stdio.h>
 
 int main() {
-    int test; // Membaca int sebagai test case untuk batasan loop permintaan khasus 
-    scanf("%d", &test);
+    int test; // Membaca int sebagai test case untuk batasan loop permintaan kasus
+    scanf("%d", &test); // Input jumlah test case
+    
     long long a, b; // Jumlah koin yang dimiliki Alice dan jumlah minimum untuk membuka deposito Profitable
-    long long result[test]; //hasil yaitu uang maksimum yang bisa Alice tabungkan di deposito Profitable
+    long long result[test]; // Array untuk menyimpan hasil untuk setiap test case
 
-    for(int i = 0; i < test; i++) { //loop sejumlah test case
-        scanf("%lld %lld", &a, &b); // long int untuk menampung input user, a = Jumlah koin yang dimiliki Alice, b = jumlah minimum untuk membuka deposito Profitable
+    // Loop untuk setiap test case
+    for(int i = 0; i < test; i++) {
+        scanf("%lld %lld", &a, &b); // Input jumlah koin yang dimiliki Alice (a) dan jumlah minimum (b)
         
-        if (a >= b) { 
-            // Jika Alice memiliki cukup koin untuk membuka deposito Profitable
-            result[i] = a; // set hasil untuk test case ke i sebagai a, yang artinya Alice mampu menabungkan semua uangnya di deposito Profitable karena memenuhi batas minimum
+        // Jika Alice memiliki cukup koin untuk membuka deposito Profitable
+        if (a >= b) {
+            result[i] = a; // Alice bisa menabungkan seluruh uangnya di deposito Profitable
         } else {
             // Jika tidak cukup, hitung jumlah koin yang bisa disimpan setelah membuka deposito Unprofitable
-            //dp ~deposit profitable, us ~uang sekarang
-            //dp-2x = us-x syarat bila menabung sejumlah x di d.unprofitable, batas min d.profitable akan dikurangi dengan 2x
-            //dp-2(dp-us) = us-(dp-us) ubah x menjadi dp-us
-            //dp-2dp+2us = us-dp+us
-            //-dp+2us = 2us-dp
-            //2us-dp = 2us-dp hasil akhir sama kedua sisi yang berarti batas minimum = uang sekarang, sehingga alice bisa menabung di deposit profitable sejumlah = minimumnya
-            long long x_min = (b - a);
+            // Penjelasan logika (dalam bahasa kode):
+            // dp ~ deposito profitable, us ~ uang sekarang
+            // dp - 2x = us - x => batas minimum deposito Profitable akan dikurangi dengan 2x
+            // dp - 2(dp - us) = us - (dp - us)
+            // dp - 2dp + 2us = us - dp + us
+            // -dp + 2us = 2us - dp => hasil akhir sama di kedua sisi
+            // Artinya, batas minimum = uang sekarang, jadi Alice bisa menabung di deposito Profitable sejumlah minimum tersebut
+            long long x_min = (b - a);  // Menghitung selisih minimum yang kurang
             if (a - x_min > 0) {
-                result[i] = a - x_min;
+                result[i] = a - x_min; // Jika masih ada uang yang tersisa setelah membuka deposito Unprofitable
             } else {
-                result[i] = 0;
+                result[i] = 0; // Jika tidak ada uang yang tersisa, set hasil ke 0
             }
         }
     }
-    for(int i = 0; i < test; i++) { //print tiap result untuk setiap test
-        printf("%lld\n", result[i]);
+
+    // Output hasil untuk setiap test case
+    for(int i = 0; i < test; i++) {
+        printf("%lld\n", result[i]); // Mencetak hasil untuk setiap test case
     }
 
-    return 0;
+    return 0; // Mengakhiri program
 }
